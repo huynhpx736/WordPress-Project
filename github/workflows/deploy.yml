@@ -1,0 +1,21 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@main
+      - name: Create .env
+        run: |
+          echo 'DATABASE_NAME=${{ secrets.DATABASE_NAME }}' >> .env
+          echo 'DATABASE_USER=${{ secrets.DATABASE_USER }}' >> .env
+          echo 'DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}' >> .env
+          echo 'DATABASE_ROOT_PASSWORD=${{ secrets.DATABASE_ROOT_PASSWORD }}' >> .env
+
+      - name: Build Docker
+        run: docker compose up --build -d
