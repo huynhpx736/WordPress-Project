@@ -1,1 +1,1 @@
-#Project môn Chuyên đề công nghệ phần mềm
+# Môn Chuyên đề công nghệ phần mềm
